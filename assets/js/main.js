@@ -142,12 +142,12 @@ function heroSection() {
 /*------------------
 	Video Popup
 --------------------*/
-function videoPopup() {
+/* function videoPopup() {
 	$('.video-popup').magnificPopup({
 		type: 'iframe',
 		autoplay : true
 	});
-}
+} */
 
 
 
@@ -262,8 +262,8 @@ function progressCircle() {
 	heroSection();
 	testimonial();
 	progressbar();
-	videoPopup();
+	//videoPopup();
 	accordions();
-	progressCircle();
+	//progressCircle();
 
 })(jQuery);

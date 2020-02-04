@@ -29,7 +29,7 @@
 
 </head>
 
-<body>
+<body id="body">
 	<!-- Page Preloder -->
 	<div id="preloder">
 		<div class="loader">
@@ -40,7 +40,7 @@
 
 
 	<!-- Header section -->
-	<header class="header-section">
+	<header id="header" class="header-section">
 		<div class="logo">
 			<img src="assets/img/anclaje-logo-simple-bco.png" alt=""><!-- Logo -->
 		</div>
@@ -59,7 +59,7 @@
 
 
 	<!-- Intro Section -->
-	<div class="hero-section">
+	<div id="hero" class="hero-section">
 		<div class="hero-content">
 			<div class="hero-center">
 				<img src="assets/img/anclaje-nuevo.png" alt="">
@@ -260,7 +260,7 @@
 			<div class="row">
 
 				<!-- Single Card -->
-				<div class="col-md-4 col-sm-6" v-for="proyecto in proyectos">
+				<div v-bind:class="[sm, md, lg]" v-for="proyecto in proyectos" @click="seleccionar(proyecto)">
 					<div class="sv-card">
 						<div class="card-img">
 							<img :src="proyecto.imagen" alt="">
@@ -275,28 +275,29 @@
 			</div>
 		</div>
 
-		<portfolio-modal :proyecto="seleccionado" v-if="seleccionado"></portfolio-modal>
+		<portfolio-modal :proyecto="seleccionado" @cerrar-modal="cerrar" v-if="seleccionado"></portfolio-modal>
 	</div>
 	<!-- Portfolio Section end-->
 
 	<!-- Portfolio modal -->
 	<template id="portfolio-modal">
 		<div class="portfolio-modal">
-			<div class="screen-black"></div>
 			<div class="portfolio-modal__close">
-				<i class="fa fa-close fa-3x"></i>
+				<i @click="emitCerrar" class="fa fa-close fa-3x"></i>
 			</div>
 			<div class="portfolio-modal__content">
-				<div class="row">
-					<div class="col-12">
-						<div class="sv-card">
-							<div class="card-img">
-								<img :src="proyecto.imagen" alt="">
-							</div>
-							<div class="card-text">
-								<h2>{{ proyecto.titulo }}</h2>
-								<p>{{ proyecto.descripcion }}</p>
-							</div>
+				<div class="content__wrapper">
+					<div class="wrapper__header">
+						<div class="header__image">
+							<img :src="proyecto.imagen" alt="">
+						</div>
+						<div class="wrapper__text">
+							<h2>{{ proyecto.titulo }}</h2>
+							<p v-show="proyecto.enlace">
+								<a class="site-btn" :href="proyecto.enlace" target="_blank">Visitar sitio</a>
+							</p>
+							<p>{{ proyecto.descripcion }}</p>
+							<p>{{ proyecto.contenido }}</p>
 						</div>
 					</div>
 				</div>
@@ -381,6 +382,7 @@
 	<script src="assets/js/owl.carousel.min.js"></script>
 	<!-- 	<script src="assets/js/circle-progress.min.js"></script>
  -->
+	<script src="assets/js/data.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	<script src="assets/js/main.js"></script>
 </body>

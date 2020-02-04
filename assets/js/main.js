@@ -145,30 +145,30 @@ function heroSection() {
 /*------------------
 	Testimonial
 --------------------*/
-function testimonial() {
-  // testimonial Carousel
-  $("#testimonial-slide").owlCarousel({
-    loop: true,
-    autoplay: true,
-    margin: 30,
-    nav: false,
-    dots: true,
-    responsive: {
-      0: {
-        items: 1,
-      },
-      600: {
-        items: 2,
-      },
-      800: {
-        items: 2,
-      },
-      1000: {
-        items: 2,
-      },
-    },
-  });
-}
+// function testimonial() {
+//   // testimonial Carousel
+//   $("#testimonial-slide").owlCarousel({
+//     loop: true,
+//     autoplay: true,
+//     margin: 30,
+//     nav: false,
+//     dots: true,
+//     responsive: {
+//       0: {
+//         items: 1,
+//       },
+//       600: {
+//         items: 2,
+//       },
+//       800: {
+//         items: 2,
+//       },
+//       1000: {
+//         items: 2,
+//       },
+//     },
+//   });
+// }
 
 /*------------------
 	Progress bar
@@ -269,40 +269,72 @@ Vue.component("portfolioModal", {
       show: true,
     };
   },
+
+  methods: {
+    emitCerrar() {
+      this.$emit("cerrar-modal");
+    },
+  },
 });
 
 var vm = new Vue({
   el: "#portafolio",
 
   mounted() {
-    this.seleccionado = this.proyectos[0];
+    // this.seleccionado = this.proyectos[0]
+  },
+
+  computed: {
+    sm() {
+      let num = 12 / this.proyectos.length;
+      return 'col-sm-' + num;
+    },
+
+    md() {
+      let num = 12 / this.proyectos.length;
+      return 'col-md-' + num;
+    },
+
+    lg() {
+      let num = 12 / this.proyectos.length;
+      return 'col-lg-' + num;
+    }
   },
 
   data: {
     seleccionado: null,
 
-    proyectos: [
-      {
-        id: 1,
-        titulo: "Título proyecto",
-        imagen: "assets/img/card-1.jpg",
-        descripcion:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec",
-      },
-      {
-        id: 2,
-        titulo: "Título proyecto",
-        imagen: "assets/img/card-1.jpg",
-        descripcion:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec",
-      },
-      {
-        id: 3,
-        titulo: "Título proyecto",
-        imagen: "assets/img/card-1.jpg",
-        descripcion:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec",
-      },
-    ],
+    proyectos: window.proyectos,
+  },
+
+  methods: {
+    seleccionar(p) {
+      this.seleccionado = p;
+      this.toggleClases();
+    },
+
+    cerrar() {
+      this.seleccionado = null;
+      this.toggleClases();
+    },
+
+    toggleClases() {
+      let claseOcultarSeccion = "hide__section";
+      let clasePreventScroll = "body__prevent-scroll";
+
+      let header = document.getElementById("header");
+      let hero = document.getElementById("hero");
+      let body = document.getElementById("body");
+
+      if (this.seleccionado) {
+        header.classList.add(claseOcultarSeccion);
+        hero.classList.add(claseOcultarSeccion);
+        body.classList.add(clasePreventScroll);
+      } else {
+        header.classList.remove(claseOcultarSeccion);
+        hero.classList.remove(claseOcultarSeccion);
+        body.classList.remove(clasePreventScroll);
+      }
+    },
   },
 });

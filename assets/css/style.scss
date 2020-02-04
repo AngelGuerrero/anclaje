@@ -9,17 +9,25 @@
  /*----------------------------------------*/
 /*  0.  Colors
 /*----------------------------------------*/
+$azul-claro: #002854;
+$azul-oscuro: #212120;
+$rojo-claro: #fb0007;
+$rojo-oscuro: #89262c;
 
 // Navbar
-// $navbar-background-color: #454c50;
-$navbar-background-color: darken($color: #454c50, $amount: 20);
+// $navbar-background-color: darken($color: #454c50, $amount: 20);
+$navbar-background-color: $azul-claro;
+
+
 $navbar-color-li: white;
 $navbar-color-li--hover: #ff999c;
 $li-background--active: #fb0007;
+// $li-background--active: $rojo-claro;
 $li-color--active: white;
 
 // Owl carousel
-$owl-carousel-control: #b8161d;
+// $owl-carousel-control: #b8161d;
+$owl-carousel-control: $rojo-claro;
 $owl-carousel-control--color: white;
 $owl-carousel-control--hover: $li-background--active;
 $owl-carousel-control--bar: lighten($color: $owl-carousel-control, $amount: 10);
@@ -44,6 +52,20 @@ html,
 body {
 	height: 100%;
 	font-family: "Roboto", sans-serif;
+}
+
+::-webkit-scrollbar {
+    width: 15px;
+    height: 15px;
+}
+
+::-webkit-scrollbar-track-piece  {
+    background-color: $navbar-background-color;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+    height: 30px;
+    background-color: $owl-carousel-control
 }
 
 img {
@@ -223,6 +245,7 @@ ul {
 .site-btn:focus {
 	text-decoration: none;
 	outline: none;
+	color: white;
 }
 
 /*------------------
@@ -234,7 +257,7 @@ ul {
 	height: 100%;
 	top: 0;
 	left: 0;
-	z-index: 999999;
+	z-index: 10;
 	background: #f1f1f1;
 	display: table;
 }
@@ -246,7 +269,7 @@ ul {
 }
 
 .loader img {
-	animation: loader 0.8s linear infinite;
+	animation: loader 0.8s linear;
 	-webkit-animation: loader 0.8s linear infinite;
 }
 
@@ -299,6 +322,10 @@ ul {
 	-webkit-transition: all 0.4s ease 0s;
 	-o-transition: all 0.4s ease 0s;
 	transition: all 0.4s ease 0s;
+}
+
+.hide__section {
+	z-index: 0;
 }
 
 .header-section .logo {
@@ -443,8 +470,7 @@ ul {
 --------------------------*/
 .about-section,
 .team-section {
-	/* background: #6a23b5; */
-	background: #454c50;
+	background: $navbar-background-color;
 	position: relative;
 	z-index: 2;
 }
@@ -988,41 +1014,32 @@ ul {
 /*------------------------
 	Services Card Section
 --------------------------*/
-.sv-card .card-img {
+.sv-card {
+	display: flex;
+	flex-direction: column;
+	&:hover {
+		cursor: pointer;
+	}
+}
+
+.card-img {
+	height: 150px;
 	position: relative;
-	display: block;
-	overflow: hidden;
-	max-height: 260px;
-}
 
-.sv-card .card-img img {
-	min-width: 100%;
-}
-
-.sv-card .card-img:after {
-	position: absolute;
-	content: "";
-	width: 100%;
-	height: 100%;
-	left: 0;
-	top: 0;
-	z-index: 1;
-	// background: #2be6ab;
-	background: lighten($color: $li-background--active, $amount: 20);
-	opacity: 0;
-	-webkit-transition: all 0.4s ease 0s;
-	-o-transition: all 0.4s ease 0s;
-	transition: all 0.4s ease 0s;
-}
-
-.sv-card:hover .card-img:after {
-	opacity: 0.8;
+	img {
+		min-width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
 }
 
 .sv-card .card-text {
-	padding: 70px 45px;
-	padding-right: 15px;
+	padding: 40px 45px;
+	min-height: 300px;
 	background: #f5f9f8;
+	&:hover {
+		cursor: pointer;
+	}
 }
 
 .sv-card .card-text h2 {
@@ -1544,6 +1561,98 @@ ul {
 	font-weight: 500;
 }
 
+/* ===========================
+	Poftfolio modal
+==============================*/
+@keyframes load-modal {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+//
+// Vars
+$modal-height: 80%;
+
+@keyframes load-modal-content {
+	0% {
+		height: 0px;
+	}
+	100% {
+		height: $modal-height;
+	}
+}
+
+.portfolio-modal {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.815);
+	top: 0;
+	z-index: 999;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 0 20px;
+	animation: load-modal 0.5s linear;
+
+	.portfolio-modal__close {
+		width: 100%;
+		padding: 10px;
+		color: white;
+		text-align: right;
+		
+		i {
+			&:hover {
+				cursor: pointer;
+			}
+		}
+	}
+
+	.portfolio-modal__content {
+		width: 90%;
+		height: $modal-height;
+		overflow-y: scroll;
+		transition: height;
+		animation: load-modal-content 0.5s linear;
+	}
+}
+
+.content__wrapper {
+
+	.wrapper__header {
+		display:flex;
+		flex-direction: column;
+
+		.header__image {
+			max-height: 460px;
+			overflow: hidden;
+		}
+	}
+
+	.wrapper__text {
+		height: 100%;
+		background-color: white;
+		padding: 40px;
+
+		h2 {
+			margin: 30px auto;
+		}
+
+		p {
+			margin: 20px auto;
+		}
+	}
+}
+
+.body__prevent-scroll {
+	overflow: hidden;
+}
+
 
 
 /* ===========================
@@ -1561,6 +1670,11 @@ ul {
 }
 
 @media only screen and (min-width: 1280px) and (max-width: 1549px) {
+	.portfolio-modal {
+		.portfolio-modal__content {
+			width: 70%;
+		}
+	}
 	#testimonial-slide .owl-dots {
 		right: -40px;
 	}

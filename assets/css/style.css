@@ -1584,6 +1584,8 @@ ul {
 
 .content__wrapper .wrapper__header .header__image {
   max-height: 460px;
+  -webkit-box-shadow: 3px 3px 5px lightgrey;
+          box-shadow: 3px 3px 5px lightgrey;
   overflow: hidden;
 }
 

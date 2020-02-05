@@ -151,98 +151,15 @@
 			</div>
 			<div class="row">
 				<!-- single service -->
-				<div class="col-md-4 col-sm-6">
+				<div class="col-lg-6 col-md-6 col-sm-6" v-for="servicio in servicios">
 					<div class="service">
-						<div class="icon">
-							<i class="flaticon-023-flask"></i>
-						</div>
+						<div class="icon"><i :class="servicio.icono"></i></div>
 						<div class="service-text">
-							<h2>Servicios informáticos</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
-								elementum id, suscipit id nulla..</p>
+							<h2>{{ servicio.titulo }}</h2>
+							<p v-show="servicio.descripcion">{{ servicio.descripcion }}</p>
 						</div>
 					</div>
 				</div>
-				<!-- single service -->
-				<div class="col-md-4 col-sm-6">
-					<div class="service">
-						<div class="icon">
-							<i class="flaticon-011-compass"></i>
-						</div>
-						<div class="service-text">
-							<h2>Servicios de administración</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
-								elementum id, suscipit id nulla..</p>
-						</div>
-					</div>
-				</div>
-				<!-- single service -->
-				<div class="col-md-4 col-sm-6">
-					<div class="service">
-						<div class="icon">
-							<i class="flaticon-037-idea"></i>
-						</div>
-						<div class="service-text">
-							<h2>Asesorías de diseño</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
-								elementum id, suscipit id nulla..</p>
-						</div>
-					</div>
-				</div>
-				<!-- single service -->
-				<div class="col-md-4 col-sm-6">
-					<div class="service">
-						<div class="icon">
-							<i class="flaticon-039-vector"></i>
-						</div>
-						<div class="service-text">
-							<h2>Cualquier servicio de publicidad</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
-								elementum id, suscipit id nulla..</p>
-						</div>
-					</div>
-				</div>
-				<!-- single service -->
-				<div class="col-md-4 col-sm-6">
-					<div class="service">
-						<div class="icon">
-							<i class="flaticon-036-brainstorming"></i>
-						</div>
-						<div class="service-text">
-							<h2>Servicios de hospedaje web</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
-								elementum id, suscipit id nulla..</p>
-						</div>
-					</div>
-				</div>
-				<!-- single service -->
-				<div class="col-md-4 col-sm-6">
-					<div class="service">
-						<div class="icon">
-							<i class="flaticon-026-search"></i>
-						</div>
-						<div class="service-text">
-							<h2>Financiamientos</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
-								elementum id, suscipit id nulla..</p>
-						</div>
-					</div>
-				</div>
-
-				<!-- single service -->
-				<div class="col-12 col-md-12 col-sm-12">
-					<div class="service">
-						<div class="icon">
-							<i class="flaticon-018-laptop-1"></i>
-						</div>
-						<div class="service-text">
-							<h2>Préstamos de dinero</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
-								elementum id, suscipit id nulla..</p>
-						</div>
-					</div>
-				</div>
-
 			</div>
 		</div>
 	</div>

@@ -277,12 +277,10 @@ Vue.component("portfolioModal", {
   },
 });
 
+//
+// Instancia de Vue para los proyectos
 var vm = new Vue({
   el: "#portafolio",
-
-  mounted() {
-    // this.seleccionado = this.proyectos[0]
-  },
 
   computed: {
     sm() {
@@ -338,3 +336,13 @@ var vm = new Vue({
     },
   },
 });
+
+//
+// Instancia de Vue para los servicios
+var vmServicios = new Vue({
+  el: "#servicios",
+
+  data: {
+    servicios: window.servicios
+  }
+})

@@ -296,15 +296,18 @@ Vue.component("contactoForm", {
   },
 
   methods: {
+
     enviar() {
+      var data = new FormData();
+      data.append("json", JSON.stringify(this.form));
+
       fetch("http://anclajemedia.com.mx/contacto.php", {
-        method: "post",
+        method: "POST",
         headers: {
-          'Accept': 'application/json, text/plain, */*',
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/x-www-form-urlencoded'
         },
-        body: this.form
-      }).then(function(res) {
+        body: "nombre=" + this.form.nombre + "&email=" + this.form.email + "&asunto=" + this.form.asunto + "&mensaje=" + this.form.mensaje
+      }).then(function (res) {
         console.log(res);
       })
     }

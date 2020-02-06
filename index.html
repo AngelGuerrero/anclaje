@@ -263,7 +263,9 @@
 				</div>
 
 				<!-- contact form component -->
-				<contacto-form></contacto-form>
+				<div class="col-md-6 col-pull">
+					<contacto-form></contacto-form>
+				</div>
 
 			</div>
 		</div>
@@ -271,7 +273,7 @@
 	<!-- Contact section end-->
 
 	<!-- Contacto form template -->
-	<template id="contact-form" class="col-md-6 col-pull">
+	<template id="contact-form">
 		<form @submit.prevent="enviar" class="form-class" id="con_form">
 			<div class="row">
 				<div class="col-sm-6">

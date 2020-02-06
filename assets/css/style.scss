@@ -41,6 +41,7 @@ $promo-background: darken(
 
 // Cards
 $card-text-background: rgb(39, 29, 29);
+// $card-text-background: white;
 // Opciones
 // background: lighten($color: $navbar-background-color, $amount: 10);
 
@@ -1104,7 +1105,7 @@ $service-padding-text: 15px;
       list-style: none;
       padding: 5px 0px;
       // background: lighten($color: $owl-carousel-control, $amount: 10);
-      background: $owl-carousel-control;
+      background: $btn-background;
     //   background: lighten($color: $navbar-background-color, $amount: 10);
       color: white;
       border-radius: 5px;

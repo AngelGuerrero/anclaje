@@ -906,6 +906,7 @@ $service-padding-text: 15px;
   background: #f6edfb;
   padding: 15px 20px;
   height: 260px;
+  resize: none;
 }
 
 .form-class textarea:focus,
@@ -1068,6 +1069,7 @@ $service-padding-text: 15px;
 .sv-card {
   display: flex;
   flex-direction: column;
+  margin-bottom: 50px;
   &:hover {
     cursor: pointer;
   }

@@ -11,7 +11,7 @@
 	Preloder
 --------------------*/
 function loader() {
-  $(window).on("load", function() {
+  $(window).on("load", function () {
     $(".loader").fadeOut();
     $("#preloder")
       .delay(10)
@@ -24,7 +24,7 @@ function loader() {
 --------------------*/
 function responsive() {
   // Responsive
-  $(".responsive").on("click", function(event) {
+  $(".responsive").on("click", function (event) {
     $(".menu-list").slideToggle(400);
     event.preventDefault();
   });
@@ -35,7 +35,7 @@ function responsive() {
 --------------------*/
 function heroSection() {
   //Slide item bg image.
-  $(".hero-item").each(function() {
+  $(".hero-item").each(function () {
     var image = $(this).data("bg");
     $(this).css({
       "background-image": "url(" + image + ")",
@@ -174,22 +174,22 @@ function heroSection() {
 	Progress bar
 --------------------*/
 function progressbar() {
-  $(".progress-bar-style").each(function() {
+  $(".progress-bar-style").each(function () {
     var progress = $(this).data("progress");
     var prog_width = progress + "%";
     if (progress <= 100) {
       $(this).append(
         '<div class="bar-inner" style="width:' +
-          prog_width +
-          '"><span>' +
-          prog_width +
-          "</span></div>"
+        prog_width +
+        '"><span>' +
+        prog_width +
+        "</span></div>"
       );
     } else {
       $(this).append(
         '<div class="bar-inner" style="width:100%"><span>' +
-          prog_width +
-          "</span></div>"
+        prog_width +
+        "</span></div>"
       );
     }
   });
@@ -199,7 +199,7 @@ function progressbar() {
 	Accordions
 --------------------*/
 function accordions() {
-  $(".panel").on("click", function(e) {
+  $(".panel").on("click", function (e) {
     $(".panel").removeClass("active");
     var $this = $(this);
     if (!$this.hasClass("active")) {
@@ -247,7 +247,7 @@ function progressCircle() {
   });
 }
 
-(function($) {
+(function ($) {
   // Call all functions
   loader();
   responsive();
@@ -258,6 +258,10 @@ function progressCircle() {
   // accordions();
   //progressCircle();
 })(jQuery);
+
+//
+// Componentes
+//
 
 Vue.component("portfolioModal", {
   template: "#portfolio-modal",
@@ -276,6 +280,38 @@ Vue.component("portfolioModal", {
     },
   },
 });
+
+Vue.component("contactoForm", {
+  template: "#contact-form",
+
+  data() {
+    return {
+      form: {
+        nombre: '',
+        email: '',
+        asunto: '',
+        mensaje: ''
+      }
+    }
+  },
+
+  methods: {
+    enviar() {
+      fetch("http://localhost/test/contact.php", {
+        method: "post",
+        headers: {
+          'Accept': 'application/json, text/plain, */*',
+          'Content-Type': 'application/json'
+        },
+        body: this.form
+      }).then(function(res) {
+        console.log(res);
+      })
+    }
+  }
+})
+
+// ==================================
 
 //
 // Instancia de Vue para los proyectos
@@ -345,4 +381,10 @@ var vmServicios = new Vue({
   data: {
     servicios: window.servicios
   }
+})
+
+//
+// Instancia de Vue para contacto
+var vmContacto = new Vue({
+  el: "#contacto"
 })

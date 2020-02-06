@@ -297,7 +297,7 @@ Vue.component("contactoForm", {
 
   methods: {
     enviar() {
-      fetch("http://localhost/test/contact.php", {
+      fetch("http://anclajemedia.com.mx/contacto.php", {
         method: "post",
         headers: {
           'Accept': 'application/json, text/plain, */*',

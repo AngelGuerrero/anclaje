@@ -1,20 +1,55 @@
 <?php
 
-if (isset($_POST['submit'])) {
-    $to = "email@example.com"; // this is your Email address
-    $from = $_POST['email']; // this is the sender's Email address
-    $first_name = $_POST['first_name'];
-    $last_name = $_POST['last_name'];
-    $subject = "Form submission";
-    $subject2 = "Copy of your form submission";
-    $message = $first_name . " " . $last_name . " wrote the following:" . "\n\n" . $_POST['message'];
-    $message2 = "Here is a copy of your message " . $first_name . "\n\n" . $_POST['message'];
+function responseEmail($error, $mensaje, $adicional)
+{
+    $respuesta = array('error' => false, 
+                       'mensaje' => 'Mensaje enviado correctamente', 
+                       'tecnico' => '');
 
-    $headers = "From:" . $from;
-    $headers2 = "From:" . $to;
-    mail($to, $subject, $message, $headers);
-    mail($from, $subject2, $message2, $headers2); // sends a copy of the message to the sender
-    echo "Mail Sent. Thank you " . $first_name . ", we will contact you shortly.";
-    // You can also use header('Location: thank_you.php'); to redirect to another page.
-    // You cannot use header and echo together. It's one or the other.
+    if ($error) {
+        $respuesta['error'] = true;
+        
+        isset($mensaje)
+        ? $respuesta['mensaje'] = $mensaje
+        : $respuesta['mensaje'] = 'No se pudo enviar el mensaje';
+
+        if (isset($adicional)) {
+            $respuesta['tecnico'] = $adicional;
+        }
+    }
+
+    echo json_encode($respuesta);
 }
+
+
+function sendMail()
+{
+    $to         = 'holamundo@anclajemedia.com.mx';
+    $from       = $_POST['email'];
+
+    $nombre     = $_POST['nombre'];
+    $asunto     = $_POST['asunto'];
+    $mensaje    = $nombre . " " . " escribió lo siguiente:" . "\n\n" . $_POST['mensaje'];
+
+    //
+    // Headers
+    $headers    = "MIME-Version: 1.0" . "\r\n";
+    $headers    .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+    $headers    .= 'From: ' . $from . "\r\n" .
+        'Reply-To: ' . $from . "\r\n" .
+        'X-Mailer: PHP/' . phpversion();
+
+    //
+    // Guards
+    if (empty($from)) return responseEmail(true, 'No se ha proporcionado un email', null);
+
+    try {
+        mail($to, $asunto, $mensaje, $headers)
+            ? responseEmail(false, null, null)
+            : responseEmail(true, null, null);
+    } catch (Exception $e) {
+        return responseEmail(true, null, $e->getMessage());
+    }
+}
+
+sendMail();

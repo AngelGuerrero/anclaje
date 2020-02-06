@@ -995,6 +995,7 @@ ul {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  color: white;
 }
 
 .sv-card:hover {
@@ -1004,7 +1005,7 @@ ul {
 .sv-card .card-text {
   padding: 20px 45px;
   min-height: 260px;
-  background-color: #ffe8bd;
+  background-color: #271d1d;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1048,7 +1049,7 @@ ul {
 .sv-card__herramientas-wrapper .herramientas__item {
   list-style: none;
   padding: 5px 0px;
-  background: #004087;
+  background: #fb0007;
   color: white;
   border-radius: 5px;
   margin: 4px;
@@ -1635,7 +1636,7 @@ ul {
 .portfolio-modal .portfolio-modal__content {
   width: 90%;
   height: 80%;
-  background-color: #ffe8bd;
+  background-color: #271d1d;
   overflow-y: scroll;
   -webkit-transition: height;
   transition: height;
@@ -1665,7 +1666,8 @@ ul {
 
 .content__wrapper .wrapper__text {
   height: 100%;
-  background-color: #ffe8bd;
+  background-color: #271d1d;
+  color: white;
   padding: 40px;
 }
 

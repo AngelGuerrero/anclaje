@@ -40,7 +40,7 @@ $promo-background: darken(
 );
 
 // Cards
-$card-text-background: rgb(255, 232, 189);
+$card-text-background: rgb(39, 29, 29);
 // Opciones
 // background: lighten($color: $navbar-background-color, $amount: 10);
 
@@ -1068,6 +1068,7 @@ $service-padding-text: 15px;
 .sv-card {
   display: flex;
   flex-direction: column;
+  color: white;
   &:hover {
     cursor: pointer;
   }
@@ -1102,7 +1103,9 @@ $service-padding-text: 15px;
     .herramientas__item {
       list-style: none;
       padding: 5px 0px;
-      background: lighten($color: $navbar-background-color, $amount: 10);
+      // background: lighten($color: $owl-carousel-control, $amount: 10);
+      background: $owl-carousel-control;
+    //   background: lighten($color: $navbar-background-color, $amount: 10);
       color: white;
       border-radius: 5px;
       margin: 4px;
@@ -1699,6 +1702,7 @@ $modal-height: 80%;
   .wrapper__text {
     height: 100%;
     background-color: $card-text-background;
+    color: white;
     padding: 40px;
 
     h2 {

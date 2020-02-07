@@ -10,12 +10,12 @@ function responseEmail($error, $mensaje, $adicional)
 
     http_response_code(200);
 
-    if($error) {
+    if ($error) {
         http_response_code(500);
 
         isset($mensaje)
-        ? $respuesta['mensaje'] = $mensaje
-        : $respuesta['mensaje'] = 'No se pudo enviar el mensaje';
+            ? $respuesta['mensaje'] = $mensaje
+            : $respuesta['mensaje'] = 'No se pudo enviar el mensaje';
     }
 
     echo json_encode($respuesta);
@@ -25,11 +25,12 @@ function responseEmail($error, $mensaje, $adicional)
 function sendMail()
 {
     $to         = 'holamundo@anclajemedia.com.mx';
-    $from       = $_POST['email'];
 
+    $from       = $_POST['email'];
     $nombre     = $_POST['nombre'];
     $asunto     = $_POST['asunto'];
-    $mensaje    = $nombre . " (" . $from . ")" . " escribió lo siguiente:" . "\n\n" . $_POST['mensaje'];
+    $mensaje    = $_POST['mensaje'];
+    $compacto   = "<Correo desde el formulario del sitio web> De: $nombre. Escribe: $mensaje";
 
     //
     // Headers
@@ -45,13 +46,13 @@ function sendMail()
         return responseEmail(true, 'No se ha proporcionado un email', null);
     }
 
-    if(!isset($nombre)) {
+    if (!isset($nombre)) {
         return responseEmail(true, 'No se ha proporcionado un nombre', null);
     }
 
     try {
-        mail($to, $asunto, $mensaje, $headers)
-            ? responseEmail(false, $mensaje, null)
+        mail($to, $asunto, $compacto, $headers)
+            ? responseEmail(false, null, null)
             : responseEmail(true, null, "Falló al tratar de enviar el correo");
     } catch (Exception $e) {
         return responseEmail(true, null, $e->getMessage());

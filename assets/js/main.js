@@ -11,7 +11,7 @@
 	Preloder
 --------------------*/
 function loader() {
-  $(window).on("load", function() {
+  $(window).on("load", function () {
     $(".loader").fadeOut();
     $("#preloder")
       .delay(10)
@@ -24,7 +24,7 @@ function loader() {
 --------------------*/
 function responsive() {
   // Responsive
-  $(".responsive").on("click", function(event) {
+  $(".responsive").on("click", function (event) {
     $(".menu-list").slideToggle(400);
     event.preventDefault();
   });
@@ -35,7 +35,7 @@ function responsive() {
 --------------------*/
 function heroSection() {
   //Slide item bg image.
-  $(".hero-item").each(function() {
+  $(".hero-item").each(function () {
     var image = $(this).data("bg");
     $(this).css({
       "background-image": "url(" + image + ")",
@@ -174,22 +174,22 @@ function heroSection() {
 	Progress bar
 --------------------*/
 function progressbar() {
-  $(".progress-bar-style").each(function() {
+  $(".progress-bar-style").each(function () {
     var progress = $(this).data("progress");
     var prog_width = progress + "%";
     if (progress <= 100) {
       $(this).append(
         '<div class="bar-inner" style="width:' +
-          prog_width +
-          '"><span>' +
-          prog_width +
-          "</span></div>"
+        prog_width +
+        '"><span>' +
+        prog_width +
+        "</span></div>"
       );
     } else {
       $(this).append(
         '<div class="bar-inner" style="width:100%"><span>' +
-          prog_width +
-          "</span></div>"
+        prog_width +
+        "</span></div>"
       );
     }
   });
@@ -199,7 +199,7 @@ function progressbar() {
 	Accordions
 --------------------*/
 function accordions() {
-  $(".panel").on("click", function(e) {
+  $(".panel").on("click", function (e) {
     $(".panel").removeClass("active");
     var $this = $(this);
     if (!$this.hasClass("active")) {
@@ -247,7 +247,7 @@ function progressCircle() {
   });
 }
 
-(function($) {
+(function ($) {
   // Call all functions
   loader();
   responsive();
@@ -302,8 +302,7 @@ Vue.component("contactoForm", {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
         },
-        body:
-          "nombre=" +
+        body: "nombre=" +
           this.form.nombre +
           "&email=" +
           this.form.email +
@@ -311,10 +310,26 @@ Vue.component("contactoForm", {
           this.form.asunto +
           "&mensaje=" +
           this.form.mensaje,
+      }).then(function (res) {
+        return res
       });
 
-      console.log(response.json());
+      let res = await response.json();
+
+      if (res.error) {
+        swal("Error!", res.mensaje, "error");
+      } else {
+        swal("Ok!", res.mensaje, "success");
+        this.resetForm();
+      }
     },
+
+    resetForm() {
+      this.form.nombre = '';
+      this.form.email = '';
+      this.form.asunto = '';
+      this.form.mensaje = '';
+    }
   },
 });
 

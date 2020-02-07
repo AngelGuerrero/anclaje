@@ -24,6 +24,7 @@ html,
 body {
   height: 100%;
   font-family: "Roboto", sans-serif;
+  scroll-behavior: smooth;
 }
 
 .dev, .dev2, .dev3 {
@@ -291,14 +292,19 @@ ul {
   display: none;
 }
 
+.responsive .fa-bars {
+  color: #ffffff;
+}
+
 .header-section {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 999;
+  z-index: 9;
   padding: 0 50px;
-  /* background: white; */
+  -webkit-box-shadow: 1px 1px 10px #00346e;
+          box-shadow: 1px 1px 10px #00346e;
   background: #002854;
   -webkit-transition: all 0.4s ease 0s;
   transition: all 0.4s ease 0s;
@@ -345,8 +351,7 @@ ul {
 
 .header-section .menu-list li a:hover,
 .header-section .menu-list li a.active {
-  /* color: #6a23b5; */
-  color: #ff999c;
+  background: #fb0007;
 }
 
 .header-section .menu-list li:last-child a {
@@ -354,8 +359,6 @@ ul {
 }
 
 .header-section .menu-list li.active a {
-  /* background: #2be6ab; */
-  /* color: #6a23b5; */
   background: #fb0007;
   color: white;
 }

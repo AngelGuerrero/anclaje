@@ -1,13 +1,15 @@
 window.servicios = [
   {
     titulo: "Generación de medios digitales de publicidad",
-    descripcion: "Generamos las mejores campañas publicitarias en base a tu negocio para impulsar tus ventas.",
+    descripcion:
+      "Generamos las mejores campañas publicitarias en base a tu negocio para impulsar tus ventas.",
     icono: "flaticon-037-idea",
   },
   {
     titulo:
       "Promoción y administración de medios digitales, de terceros o propios",
-    descripcion: "Administramos tus redes sociales mostrando el mejor contenido para que tu negocio tenga más audiencia y llegue a las personas correctas.",
+    descripcion:
+      "Administramos tus redes sociales mostrando el mejor contenido para que tu negocio tenga más audiencia y llegue a las personas correctas.",
     icono: "flaticon-023-flask",
   },
   {
@@ -42,48 +44,29 @@ window.proyectos = [
     titulo: "Alera viajes",
     imagen: "assets/img/alera.png",
     enlace: "https://aleratravel.com/",
-    herramientas: [
-      "wordpress",
-      "woocommerce",
-      "CSS",
-      "JavaScript"
-    ]
+    herramientas: ["wordpress", "woocommerce", "CSS", "JavaScript"],
   },
   {
     id: 2,
     titulo: "SPC Laboratorios",
     imagen: "assets/img/spc-laboratorios.png",
     enlace: "http://www.laboratoriospc.com/",
-    herramientas: [
-      "html5",
-      "CSS",
-      "JavaScript",
-      "php"
-    ]
+    herramientas: ["html5", "CSS", "JavaScript", "php"],
   },
   {
     id: 3,
     titulo: "Dominio Patrimonial Hércules",
     imagen: "assets/img/hercules.png",
     enlace: "http://herculesq.com.mx/",
-    herramientas: [
-      "wordpress",
-      "php",
-      "CSS",
-    ]
+    herramientas: ["wordpress", "php", "CSS"],
   },
   {
     id: 4,
     titulo: "Intranet Petro Gasolinera",
     imagen: "assets/img/petro-solo.png",
     enlace: "",
-    herramientas: [
-      "php",
-      "jquery",
-      "JavaScript",
-      "ajax"
-    ]
-  }
+    herramientas: ["php", "jquery", "JavaScript", "ajax"],
+  },
   // {
   //   id: 5,
   //   titulo: "CyMMEX",
@@ -93,4 +76,12 @@ window.proyectos = [
   //     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec  contenido: "",
 
   // },
+];
+
+window.menu = [
+  { nombre: "Inicio", activo: true, link: "#hero" },
+  { nombre: "Nosotros", activo: false, link: "#nosotros" },
+  { nombre: "Servicios", activo: false, link: "#servicios" },
+  { nombre: "Portafolio", activo: false, link: "#portafolio" },
+  { nombre: "Contacto", activo: false, link: "#contacto" },
 ];

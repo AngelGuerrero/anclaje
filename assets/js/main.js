@@ -19,16 +19,6 @@ function loader() {
   });
 }
 
-/*------------------
-	Navigation
---------------------*/
-function responsive() {
-  // Responsive
-  $(".responsive").on("click", function(event) {
-    $(".menu-list").slideToggle(400);
-    event.preventDefault();
-  });
-}
 
 /*------------------
 	Hero Section
@@ -250,7 +240,6 @@ function progressCircle() {
 (function($) {
   // Call all functions
   loader();
-  responsive();
   heroSection();
   // testimonial();
   // progressbar();
@@ -341,9 +330,21 @@ Vue.component("contactoForm", {
 var vmMenu = new Vue({
   el: "#header",
 
+  created() {
+    this.actualWidth = window.innerWidth;
+    
+    let that = this;
+    window.addEventListener('resize', function(e) {
+      that.resetMenu(e);
+    });
+  },
+
   data: {
     antiguoIndex: 0,
-    menu: window.menu
+    menu: window.menu,
+    ruptura: 790,
+    actualWidth: null,
+    menuAbierto: false
   },
 
   methods: {
@@ -351,6 +352,37 @@ var vmMenu = new Vue({
       this.menu[this.antiguoIndex].activo = false;
       this.menu[nuevoIndex].activo = true;
       this.antiguoIndex = nuevoIndex;
+
+      if (this.actualWidth < this.ruptura) {
+        this.toggleMenu();
+      }
+    },
+
+    toggleMenu() {
+      $(".menu-list").slideToggle(400);
+      this.menuAbierto = !this.menuAbierto;
+    },
+
+    resetMenu(e) {
+      this.actualWidth = e.target.innerWidth;
+
+      //
+      // Si la pantalla se hace grande y el menú está cerrado
+      // Ábrelo
+      if (this.actualWidth > this.ruptura && !this.menuAbierto) {
+        $(".menu-list").slideDown(400);
+        this.menuAbierto = true;
+        return;
+      }
+
+      //
+      // Si la pantalla se hace pequeña y el menú abierto
+      // Ciérralo
+      if (this.actualWidth < this.ruptura && this.menuAbierto) {
+        $(".menu-list").slideUp(400);
+        this.menuAbierto = false;
+        return;
+      }
     }
   }
 });

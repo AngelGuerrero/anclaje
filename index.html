@@ -47,7 +47,7 @@
 			<img src="assets/img/anclaje-logo-simple-bco.png" alt=""><!-- Logo -->
 		</div>
 		<!-- Navigation -->
-		<div class="responsive"><i class="fa fa-bars"></i></div>
+		<div @click="toggleMenu" class="responsive"><i class="fa fa-bars"></i></div>
 		<nav>
 			<ul class="menu-list">
 				<li v-for="(item, index) in menu" :class="{ active: item.activo }" @click="toggleClass(index)">

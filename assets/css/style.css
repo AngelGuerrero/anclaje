@@ -889,7 +889,8 @@ ul {
 	Footer section
 --------------------------*/
 .footer-section {
-  background: #333333;
+  background: #00152b;
+  color: #ffffff;
   text-align: center;
 }
 

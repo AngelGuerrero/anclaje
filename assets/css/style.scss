@@ -12,6 +12,7 @@ $azul-claro: #002854;
 $azul-oscuro: #212120;
 $rojo-claro: #fb0007;
 $rojo-oscuro: #89262c;
+$dark-blue: darken($azul-claro, 8%);
 
 // Navbar
 $navbar-background-color: $azul-claro;
@@ -37,7 +38,7 @@ $promo-background: darken(
 );
 
 // Cards
-$card-text-background: darken($azul-claro, 8%); 
+$card-text-background: $dark-blue;
 $herramientas-background: desaturate($rojo-claro, 25%);
 
 // Btn
@@ -48,10 +49,7 @@ $btn-background: darken(
 $btn-color: white;
 
 // Footer
-$footer-background: lighten(
-  $color: $promo-background,
-  $amount: 20,
-);
+$footer-background: $dark-blue;
 
 /*----------------------------------------*/
 /*  Functions
@@ -970,6 +968,7 @@ $service-padding-text: 15px;
 --------------------------*/
 .footer-section {
   background: $footer-background;
+  color: set-color($footer-background);
   text-align: center;
 }
 

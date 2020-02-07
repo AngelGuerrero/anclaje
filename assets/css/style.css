@@ -831,6 +831,7 @@ ul {
   background: #f6edfb;
   padding: 15px 20px;
   height: 260px;
+  resize: none;
 }
 
 .form-class textarea:focus,
@@ -996,6 +997,7 @@ ul {
       -ms-flex-direction: column;
           flex-direction: column;
   color: white;
+  margin-bottom: 50px;
 }
 
 .sv-card:hover {

@@ -267,29 +267,35 @@
 					</p>
 				</div>
 
-				<!-- contact form -->
+				<!-- contact form component -->
 				<div class="col-md-6 col-pull">
-					<form class="form-class" id="con_form">
-						<div class="row">
-							<div class="col-sm-6">
-								<input type="text" name="name" placeholder="Tu nombre">
-							</div>
-							<div class="col-sm-6">
-								<input type="text" name="email" placeholder="Tu email" required>
-							</div>
-							<div class="col-sm-12">
-								<input type="text" name="subject" placeholder="Asunto" required>
-								<textarea name="message" placeholder="Mensaje" required></textarea>
-								<button class="site-btn">Enviar</button>
-							</div>
-						</div>
-					</form>
+					<contacto-form></contacto-form>
 				</div>
+
 			</div>
 		</div>
 	</div>
 	<!-- Contact section end-->
 
+	<!-- Contacto form template -->
+	<template id="contact-form">
+		<form @submit.prevent="enviar" class="form-class" id="con_form">
+			<div class="row">
+				<div class="col-sm-6">
+					<input v-model="form.nombre" type="text" name="nombre" placeholder="Tu nombre">
+				</div>
+				<div class="col-sm-6">
+					<input v-model="form.email" type="text" name="email" placeholder="Tu email" required>
+				</div>
+				<div class="col-sm-12">
+					<input v-model="form.asunto" type="text" name="asunto" placeholder="Asunto" required>
+					<textarea v-model="form.mensaje" name="mensaje" placeholder="Mensaje" required></textarea>
+					<button type="submit" class="site-btn">Enviar</button>
+				</div>
+			</div>
+		</form>
+	</template>
+	<!-- End Contacto form template -->
 
 	<!-- Footer section -->
 	<footer class="footer-section">
@@ -334,6 +340,8 @@
 	<script src="assets/js/owl.carousel.min.js"></script>
 	<!-- 	<script src="assets/js/circle-progress.min.js"></script>
  -->
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 	<script src="assets/js/data.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	<script src="assets/js/main.js"></script>

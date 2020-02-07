@@ -76,6 +76,7 @@ html,
 body {
   height: 100%;
   font-family: "Roboto", sans-serif;
+  scroll-behavior: smooth;
 }
 
 .dev {
@@ -353,16 +354,20 @@ ul {
 --------------------------*/
 .responsive {
   display: none;
+
+  .fa-bars {
+    color: set-color($navbar-background-color);
+  }
 }
 
 .header-section {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 999;
+  z-index: 9;
   padding: 0 50px;
-  /* background: white; */
+  box-shadow: 1px 1px 10px lighten($navbar-background-color, 5%);
   background: $navbar-background-color;
   -webkit-transition: all 0.4s ease 0s;
   -o-transition: all 0.4s ease 0s;
@@ -412,8 +417,7 @@ ul {
 
 .header-section .menu-list li a:hover,
 .header-section .menu-list li a.active {
-  /* color: #6a23b5; */
-  color: $navbar-color-li--hover;
+  background: $owl-carousel-control;
 }
 
 .header-section .menu-list li:last-child a {
@@ -421,8 +425,6 @@ ul {
 }
 
 .header-section .menu-list li.active a {
-  /* background: #2be6ab; */
-  /* color: #6a23b5; */
   background: $li-background--active;
   color: $li-color--active;
 }

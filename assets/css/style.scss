@@ -14,51 +14,56 @@ $rojo-claro: #fb0007;
 $rojo-oscuro: #89262c;
 
 // Navbar
-// $navbar-background-color: darken($color: #454c50, $amount: 20);
 $navbar-background-color: $azul-claro;
 
 $navbar-color-li: white;
 $navbar-color-li--hover: #ff999c;
 $li-background--active: #fb0007;
-// $li-background--active: $rojo-claro;
 $li-color--active: white;
 
 // Owl carousel
-// $owl-carousel-control: #b8161d;
 $owl-carousel-control: $rojo-claro;
 $owl-carousel-control--color: white;
 $owl-carousel-control--hover: $li-background--active;
 $owl-carousel-control--bar: lighten(
   $color: $owl-carousel-control,
-  $amount: 10
+  $amount: 10,
 );
 
 // Promotion section
 $promo-background: darken(
   $color: $navbar-background-color,
-  $amount: 20
+  $amount: 20,
 );
 
 // Cards
-$card-text-background: rgb(39, 29, 29);
-// $card-text-background: white;
-// Opciones
-// background: lighten($color: $navbar-background-color, $amount: 10);
+$card-text-background: darken($azul-claro, 8%); 
+$herramientas-background: desaturate($rojo-claro, 25%);
 
 // Btn
 $btn-background: darken(
   $color: $owl-carousel-control,
-  $amount: 10
+  $amount: 10,
 );
 $btn-color: white;
 
 // Footer
-// $footer-background: darken($color: $owl-carousel-control, $amount: 15);
 $footer-background: lighten(
   $color: $promo-background,
-  $amount: 20
+  $amount: 20,
 );
-$footer-color-text: white;
+
+/*----------------------------------------*/
+/*  Functions
+/*----------------------------------------*/
+
+@function set-color($background) {
+  @if (lightness($background) > 50) {
+    @return #000000; // Lighter backgorund, return dark color
+  } @else {
+    @return #ffffff; // Darker background, return light color
+  }
+}
 
 /*----------------------------------------*/
 /*  1.  Theme default CSS
@@ -882,37 +887,34 @@ $service-padding-text: 15px;
   height: 100%;
   right: -15px;
   top: 0;
-  // background: #6a23b5;
   background: $owl-carousel-control;
   z-index: -1;
 }
 
-.form-class input[type="text"] {
-  width: 100%;
-  margin-bottom: 26px;
-  border: none;
-  background: #f6edfb;
-  padding: 17px 20px;
-}
+.form-class {
+  input[type="text"] {
+    width: 100%;
+    margin-bottom: 26px;
+    background: #f6edfb;
+    padding: 17px 20px;
+    border: 1px solid transparent;
+  }
 
-.form-class input[type="text"]:focus,
-.form-class input[type="text"]:hover {
-  outline: none;
-}
+  textarea {
+    width: 100%;
+    margin-bottom: 40px;
+    border: 1px solid transparent;
+    background: #f6edfb;
+    padding: 15px 20px;
+    height: 260px;
+    resize: none;
+  }
 
-.form-class textarea {
-  width: 100%;
-  margin-bottom: 40px;
-  border: none;
-  background: #f6edfb;
-  padding: 15px 20px;
-  height: 260px;
-  resize: none;
-}
-
-.form-class textarea:focus,
-.form-class textarea:hover {
-  outline: none;
+  input[type="text"]:focus,
+  textarea:focus {
+    outline: none;
+    border: 1px solid skyblue;
+  }
 }
 
 .form-class ::-webkit-input-placeholder {
@@ -967,14 +969,12 @@ $service-padding-text: 15px;
 	Footer section
 --------------------------*/
 .footer-section {
-  // background: #220c3b;
   background: $footer-background;
   text-align: center;
 }
 
 .footer-section h2 {
-  // color: #6a23b5;
-  color: $footer-color-text;
+  color: set-color($footer-background);
   font-size: 14px;
   padding: 18px 0;
 }
@@ -1070,7 +1070,7 @@ $service-padding-text: 15px;
 .sv-card {
   display: flex;
   flex-direction: column;
-  color: white;
+  color: set-color($card-text-background);
   margin-bottom: 50px;
   &:hover {
     cursor: pointer;
@@ -1106,10 +1106,8 @@ $service-padding-text: 15px;
     .herramientas__item {
       list-style: none;
       padding: 5px 0px;
-      // background: lighten($color: $owl-carousel-control, $amount: 10);
-      background: $btn-background;
-    //   background: lighten($color: $navbar-background-color, $amount: 10);
-      color: white;
+      background: $herramientas-background;
+      color: set-color($herramientas-background);
       border-radius: 5px;
       margin: 4px;
       text-align: center;

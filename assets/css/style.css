@@ -8,6 +8,9 @@
 /*  0.  Colors
 /*----------------------------------------*/
 /*----------------------------------------*/
+/*  Functions
+/*----------------------------------------*/
+/*----------------------------------------*/
 /*  1.  Theme default CSS
 /*----------------------------------------*/
 *,
@@ -814,29 +817,25 @@ ul {
 .form-class input[type="text"] {
   width: 100%;
   margin-bottom: 26px;
-  border: none;
   background: #f6edfb;
   padding: 17px 20px;
-}
-
-.form-class input[type="text"]:focus,
-.form-class input[type="text"]:hover {
-  outline: none;
+  border: 1px solid transparent;
 }
 
 .form-class textarea {
   width: 100%;
   margin-bottom: 40px;
-  border: none;
+  border: 1px solid transparent;
   background: #f6edfb;
   padding: 15px 20px;
   height: 260px;
   resize: none;
 }
 
-.form-class textarea:focus,
-.form-class textarea:hover {
+.form-class input[type="text"]:focus,
+.form-class textarea:focus {
   outline: none;
+  border: 1px solid skyblue;
 }
 
 .form-class ::-webkit-input-placeholder {
@@ -895,7 +894,7 @@ ul {
 }
 
 .footer-section h2 {
-  color: white;
+  color: #ffffff;
   font-size: 14px;
   padding: 18px 0;
 }
@@ -996,7 +995,7 @@ ul {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  color: white;
+  color: #ffffff;
   margin-bottom: 50px;
 }
 
@@ -1007,7 +1006,7 @@ ul {
 .sv-card .card-text {
   padding: 20px 45px;
   min-height: 260px;
-  background-color: #271d1d;
+  background-color: #00152b;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1051,8 +1050,8 @@ ul {
 .sv-card__herramientas-wrapper .herramientas__item {
   list-style: none;
   padding: 5px 0px;
-  background: #c80006;
-  color: white;
+  background: #dc1f25;
+  color: #ffffff;
   border-radius: 5px;
   margin: 4px;
   text-align: center;
@@ -1638,7 +1637,7 @@ ul {
 .portfolio-modal .portfolio-modal__content {
   width: 90%;
   height: 80%;
-  background-color: #271d1d;
+  background-color: #00152b;
   overflow-y: scroll;
   -webkit-transition: height;
   transition: height;
@@ -1668,7 +1667,7 @@ ul {
 
 .content__wrapper .wrapper__text {
   height: 100%;
-  background-color: #271d1d;
+  background-color: #00152b;
   color: white;
   padding: 40px;
 }

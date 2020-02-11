@@ -3,20 +3,20 @@ window.servicios = [
     titulo: "Generación de medios digitales de publicidad",
     descripcion:
       "Generamos las mejores campañas publicitarias en base a tu negocio para impulsar tus ventas.",
-    icono: "flaticon-037-idea",
+    icono: "flaticon-029-sketchbook",
   },
   {
     titulo:
       "Promoción y administración de medios digitales, de terceros o propios",
     descripcion:
       "Administramos tus redes sociales mostrando el mejor contenido para que tu negocio tenga más audiencia y llegue a las personas correctas.",
-    icono: "flaticon-023-flask",
+    icono: "flaticon-022-branding",
   },
   {
     titulo: "Desarrollo y diseño de software",
     descripcion:
       "Desarrollo de software a la medida, tomamos los requerimientos necesarios, llevamos a cabo la planeación y construcción de un software acorde a las necesidades de su negocio para su éxito.",
-    icono: "flaticon-011-compass",
+    icono: "flaticon-031-scheme",
   },
   {
     titulo: "Creación y diseño de marcas y medios publicitarios impresos",
@@ -28,13 +28,13 @@ window.servicios = [
     titulo: "Prestación de servicios de hospedaje web",
     descripcion:
       "Administración y hospedaje de sitios y aplicaciones web, dejamos a nosotros la parte técnica para que tú te enfoques en tu negocio.",
-    icono: "flaticon-036-brainstorming",
+    icono: "flaticon-027-monitor",
   },
   {
     titulo: "Registro de dominios",
     descripcion:
       "Realizamos el registro de tu dominio para tu negocio, te damos las mejores soluciones en base a tus necesidades para ti y tus clientes.",
-    icono: "flaticon-027-monitor",
+    icono: "flaticon-030-computer",
   },
 ];
 

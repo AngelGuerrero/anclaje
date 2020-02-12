@@ -63,6 +63,11 @@ $footer-background: $dark-blue;
   }
 }
 
+@mixin background-opacity($color, $opacity: 0.3) {
+  background: $color;
+  background: rgba($color, $opacity);
+}
+
 /*----------------------------------------*/
 /*  1.  Theme default CSS
 /*----------------------------------------*/
@@ -1638,6 +1643,7 @@ $service-padding-text: 15px;
 //
 // Vars
 $modal-height: 80%;
+$modal-break-width: 768px;
 
 @keyframes load-modal-content {
   0% {
@@ -1678,21 +1684,24 @@ $modal-height: 80%;
 
   .portfolio-modal__content {
     width: 90%;
-    height: $modal-height;
+    height: auto;
     background-color: $card-text-background;
     overflow-y: scroll;
     transition: height;
     animation: load-modal-content 0.5s linear;
+    @media only screen and (max-width: $modal-break-width) {
+      height: $modal-height;      
+    }
   }
 }
 
 .content__wrapper {
+  position: relative;
   .wrapper__header {
     display: flex;
     flex-direction: column;
 
     .header__image {
-      box-shadow: 3px 3px 5px lightgrey;
       overflow: hidden;
 
       img {
@@ -1702,10 +1711,19 @@ $modal-height: 80%;
   }
 
   .wrapper__text {
-    height: 100%;
-    background-color: $card-text-background;
+    @include background-opacity($card-text-background, 0.5);
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
     color: white;
     padding: 40px;
+
+    @media only screen and (max-width: $modal-break-width) {
+      position: relative;
+      padding: 10px;
+      text-align: center;
+    }
 
     h2 {
       margin: 30px auto;

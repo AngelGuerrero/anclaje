@@ -1640,13 +1640,23 @@ ul {
 
 .portfolio-modal .portfolio-modal__content {
   width: 90%;
-  height: 80%;
+  height: auto;
   background-color: #00152b;
   overflow-y: scroll;
   -webkit-transition: height;
   transition: height;
   -webkit-animation: load-modal-content 0.5s linear;
           animation: load-modal-content 0.5s linear;
+}
+
+@media only screen and (max-width: 768px) {
+  .portfolio-modal .portfolio-modal__content {
+    height: 80%;
+  }
+}
+
+.content__wrapper {
+  position: relative;
 }
 
 .content__wrapper .wrapper__header {
@@ -1660,8 +1670,6 @@ ul {
 }
 
 .content__wrapper .wrapper__header .header__image {
-  -webkit-box-shadow: 3px 3px 5px lightgrey;
-          box-shadow: 3px 3px 5px lightgrey;
   overflow: hidden;
 }
 
@@ -1670,10 +1678,22 @@ ul {
 }
 
 .content__wrapper .wrapper__text {
-  height: 100%;
-  background-color: #00152b;
+  background: #00152b;
+  background: rgba(0, 21, 43, 0.5);
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
   color: white;
   padding: 40px;
+}
+
+@media only screen and (max-width: 768px) {
+  .content__wrapper .wrapper__text {
+    position: relative;
+    padding: 10px;
+    text-align: center;
+  }
 }
 
 .content__wrapper .wrapper__text h2 {
